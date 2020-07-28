@@ -2,4 +2,4 @@
 # defaults file for wordpress-docker
 compose_project_dir: /efs/{{ system_user }}/compose-pi
 domain: pi.smartdevops.net
-stage: stage
+stage: production
