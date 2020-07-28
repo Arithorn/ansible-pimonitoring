@@ -14,7 +14,7 @@ services:
       CLIENT_MAX_BODY_SIZE: '100M'
       GZIP: 'on'
       DOMAINS: '{{ domain }} -> http://grafana:3000'
-      STAGE: '{{ dev }}'
+      STAGE: '{{ stage }}'
     restart: unless-stopped
     networks:
       - pi
