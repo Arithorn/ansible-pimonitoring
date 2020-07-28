@@ -8,8 +8,8 @@
     recurse: yes
     mode: 0755
   with_items:
-  - logs/nginx
-  
+    - logs/nginx
+
 - name: Ensure JQ is installed
   package:
     name: jq
@@ -23,14 +23,6 @@
     group: "{{ system_user }}"
     state: touch
 
-# - name: Deploy uploads.ini to WordPress "{{ compose_project_dir }}" dir
-#   copy:
-#     src: "{{ role_path }}/files/uploads.ini"
-#     dest: "{{ compose_project_dir }}/wordpress/"
-#     owner: "www-data"
-#     group: "www-data"
-#     mode: 0644
-
 - name: Deploy Docker Compose project for Pi Monitoring containers
   template:
     src: docker-compose.j2
@@ -39,11 +31,6 @@
     group: "{{ system_user }}"
     mode: 0644
 
-
-# - debug:
-#     msg:
-#     - "WORDPRESS_DB_PASSWORD: {{ (wp_db_psw_out.stdout|from_json).SecretString }}"
-
 # - name: Deploy .env file
 #   template:
 #     src: env.j2
@@ -51,13 +38,11 @@
 #     owner: "{{ system_user }}"
 #     group: "{{ system_user }}"
 #     mode: 0600
-  
 
-# - name: Run docker-compose up
-#   command: docker-compose -f docker-compose.yml up -d
-#   args:
-#     chdir: "{{ compose_project_dir }}"
-
+- name: Run docker-compose up
+  command: docker-compose -f docker-compose.yml up -d
+  args:
+    chdir: "{{ compose_project_dir }}"
 # - name: Waiting for all containers to start up and {{ domain }} to be accessible
 #   wait_for:
 #     host: "{{ domain }}"
