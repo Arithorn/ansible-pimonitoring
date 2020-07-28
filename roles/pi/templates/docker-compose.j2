@@ -24,7 +24,8 @@ services:
     image: grafana/grafana
     container_name: grafana
     restart: unless-stopped
-    depends_on: influxdb
+    depends_on: 
+      - influxdb
     networks:
       - pi
 
