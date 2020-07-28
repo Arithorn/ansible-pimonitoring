@@ -24,6 +24,9 @@ services:
     image: grafana/grafana
     container_name: grafana
     restart: unless-stopped
+    ports:
+      - '3000:3000'
+
     depends_on: 
       - influxdb
     networks:
@@ -39,8 +42,8 @@ services:
       - pi
 
   mosquito:
-    image: eclipse-mosquito
-    container_name: mosquito
+    image: eclipse-mosquitto
+    container_name: mosquitto
     volumes:
       - /efs/mosquito/config:/mosquito/config
       - /efs/mosquito/data:/mosquito/data
