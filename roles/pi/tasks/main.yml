@@ -31,6 +31,21 @@
     group: "{{ system_user }}"
     mode: 0644
 
+- name: Create telegraf.conf file
+  file:
+    path: "{{ telegraf_config_file }}"
+    owner: "{{ system_user }}"
+    group: "{{ system_user }}"
+    state: touch
+
+- name: Deploy telegraf.conf for Pi Monitoring containers
+  template:
+    src: telegraf.j2
+    dest: "{{ telegraf_config_file }}"
+    owner: "{{ system_user }}"
+    group: "{{ system_user }}"
+    mode: 0644
+
 # - name: Deploy .env file
 #   template:
 #     src: env.j2

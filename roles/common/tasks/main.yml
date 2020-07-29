@@ -1,7 +1,7 @@
 ---
 - name: upgrade all packages
   package:
-    name: '*'
+    name: "*"
     state: latest
   become: yes
 
@@ -33,8 +33,10 @@
   command: aws secretsmanager get-secret-value --region af-south-1 --output json --secret-id efsid
   register: efsid
 
+- name: Get InfluxDB Admin Password
+  command: aws secretsmanager get-secret-value --region af-south-1 --output json --secret-id influxadminpass
+  register: influxadminpass
 
-
-- debug:
-    var: efsid
-    
+- name: Get Telegraf User Password
+  command: aws secretsmanager get-secret-value --region af-south-1 --output json --secret-id telegrafpass
+  register: telegrafpass
