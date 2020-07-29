@@ -35,8 +35,8 @@
 
 - name: Get InfluxDB Admin Password
   command: aws secretsmanager get-secret-value --region af-south-1 --output json --secret-id influxadminpass
-  register: influxadminpass
+  register: influxadmin_pass
 
 - name: Get Telegraf User Password
   command: aws secretsmanager get-secret-value --region af-south-1 --output json --secret-id telegrafpass
-  register: telegrafpass
+  register: telegraf_pass
