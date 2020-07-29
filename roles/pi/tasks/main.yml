@@ -49,7 +49,7 @@
 
 - name: Deploy telegraf.conf for Pi Monitoring containers
   template:
-    src: telegraf.j2
+    src: telegraf.conf.j2
     dest: "{{ telegraf_config_file }}"
     owner: "{{ system_user }}"
     group: "{{ system_user }}"
