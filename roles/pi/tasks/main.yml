@@ -10,6 +10,15 @@
   with_items:
     - logs/nginx
 
+- name: Setup telegraf dir structure
+  file:
+    path: "{{ telegraf_config_dir }}"
+    state: directory
+    owner: "{{ system_user }}"
+    group: "{{ system_user }}"
+    recurse: yes
+    mode: 0755
+
 - name: Ensure JQ is installed
   package:
     name: jq

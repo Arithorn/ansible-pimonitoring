@@ -1,7 +1,8 @@
 ---
 # defaults file for wordpress-docker
 compose_project_dir: /efs/{{ system_user }}/compose-pi
-telegraf_config_file: /efs/{{ system_user}}/telegraf/telegraf.conf
+telegraf_config_dir: /efs/{{ system_user}}/telegraf
+telegraf_config_file: "{{telegraf_config_dir}}/telegraf.conf"
 domain: pi.smartdevops.net
 stage: production
 telegrafuserpass: "{{  (telegrafpass.stdout | from_json).SecretString }}"
